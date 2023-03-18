@@ -5,21 +5,20 @@ const NotificationMessageComponent = {
     type: {type: String, default: 'info'},
     header: {type: String, default: 'Check it out'},
   },
-  emits: ['close-notification'],
-  template: '#notification-message-template'
+  template: '#notification-message-template',
+  data(){
+    return {
+      hidden: false,
+    }
+  },
+  methods: {
+    hide(){
+      this.hidden = true
+    },
+  }
 }
 createApp({
   components: {
     NotificationMessage: NotificationMessageComponent,
   },
-  data(){
-    return {
-      notification: true,
-    }
-  },
-  methods: {
-    closeit(){
-      this.notification = !this.notification
-    },
-  }
 }).mount("#app")

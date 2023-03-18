@@ -12,14 +12,18 @@
 	<body>
 		<div id="app" class="ui container">
 			<h1>Notification Center</h1>
-			<notification-message v-if="notification" type = "warning" @close-notification="closeit">
+			<notification-message type = "info">
 				<p>Go to the <b>special offers</b> page to see now.</p>
+			</notification-message>
+			
+			<notification-message type = "error">
+				<p>Tá tudo indo pros ares <b>FUJA AGORA!</b></p>
 			</notification-message>
 		</div>
 		
 		<script type="text/x-template" id="notification-message-template">
-			<div class="ui message" :class="type">
-				<i class="close icon" @click=" $emit('close-notification') "></i>
+			<div class="ui message" :class="type" v-if="!hidden" >
+				<i class="close icon" @click=" hide "></i>
 				<div class="header">{{ header }}</div>
 				<slot></slot>
 			</div>
